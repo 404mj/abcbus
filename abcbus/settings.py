@@ -22,14 +22,14 @@ STATICFILES_DIRS = (
 )
 
 # Database
-DATABASES = { 
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'abcbus',
-        'USER':'root',
-        'PASSWORD':'123Qwe!@#',
-        'HOST':'',
-        'PORT':'3306'
+        'USER': 'root',
+        'PASSWORD': '123Qwe!@#',
+        'HOST': '192.168.44.128',
+        'PORT': '3306'
     }
 }
 
@@ -69,7 +69,6 @@ TEMPLATES = [
     },
 ]
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -84,6 +83,3 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-
