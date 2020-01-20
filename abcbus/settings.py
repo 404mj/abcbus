@@ -16,12 +16,19 @@ USE_TZ = True
 ROOT_URLCONF = 'abcbus.urls'
 WSGI_APPLICATION = 'abcbus.wsgi.application'
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    'collect/static/',
+)
 
 # Database
 DATABASES = { 
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'abcbus',
+        'USER':'root',
+        'PASSWORD':'1213Qwe!@#',
+        'HOST':'',
+        'PORT':'3306'
     }
 }
 
@@ -32,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'collect.apps.CollectConfig',
 ]
 
 MIDDLEWARE = [
