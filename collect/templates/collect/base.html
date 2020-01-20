@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 
-<html lang="zh-CN">
+<html lang="en">
 <head>
+    {#  according to :  https://v4.bootcss.com/docs/getting-started/introduction/#}
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% load static %}
-    <link href="{% static 'collect/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'collect/bootstrap4/css/bootstrap.min.css' %}" rel="stylesheet">
     <title>abcbus</title>
 </head>
 <body>
 {% block content %}
 
 {% endblock content %}
-<script src="{% static 'collect/bootstrap/jquery-1.12.4.min.js' %}" ></script>
-<script src="{% static 'collect/bootstrap/js/bootstrap.js' %}" ></script>
+<script src="{% static 'collect/bootstrap4/js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'collect/bootstrap4/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 
 </html>
