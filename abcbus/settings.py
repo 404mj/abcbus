@@ -18,7 +18,7 @@ WSGI_APPLICATION = 'abcbus.wsgi.application'
 STATIC_URL = '/static/'
 
 # Database
-DATABASES = {
+DATABASES = { 
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
