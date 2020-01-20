@@ -1,5 +1,5 @@
-from django.urls improt path
-form . improt views
+from django.urls import path
+from . import views
 
 app_name='collect'
 urlpatterns=[

@@ -6,8 +6,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Internationalization
-LANGUAGE_CODE = 'zh-cn'
-TIME_ZONE = 'Asia/shanghai'
+# zh-Hans
+LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Asia/Shanghai'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -26,7 +27,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'abcbus',
         'USER':'root',
-        'PASSWORD':'1213Qwe!@#',
+        'PASSWORD':'123Qwe!@#',
         'HOST':'',
         'PORT':'3306'
     }
