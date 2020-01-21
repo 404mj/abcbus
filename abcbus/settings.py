@@ -21,6 +21,11 @@ STATICFILES_DIRS = (
     'collect/static/',
 )
 
+# user auth model
+AUTH_USER_MODEL = 'collect.BankUser'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
 # Database
 DATABASES = {
     'default': {
@@ -56,7 +61,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

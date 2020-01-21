@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% load static %}
     <link href="{% static 'collect/bootstrap4/css/bootstrap.min.css' %}" rel="stylesheet">
-    <title>abcbus</title>
+    <title>{% block title %}abcbus{% endblock %}</title>
 </head>
 <body>
 {% block content %}
