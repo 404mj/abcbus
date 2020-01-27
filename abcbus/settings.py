@@ -23,8 +23,10 @@ STATICFILES_DIRS = (
 
 # user auth model
 AUTH_USER_MODEL = 'collect.BankUser'
+# AUTHENTICATION_BACKENDS = ('accounts.backends.')
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+# LOGIN_URL = 'collect/login'
 
 # Database
 DATABASES = {
@@ -33,8 +35,9 @@ DATABASES = {
         'NAME': 'abcbus',
         'USER': 'root',
         'PASSWORD': '123Qwe!@#',
-        'HOST': '192.168.44.128',
-        'PORT': '3306'
+        'HOST': '192.168.174.137',
+        'PORT': '3306',
+        'charset': 'utf8'
     }
 }
 
@@ -61,7 +64,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, '')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

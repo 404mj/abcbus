@@ -4,12 +4,12 @@ from .models import BankUser
 
 
 class BankUserCreationForm(UserCreationForm):
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = BankUser
-        fields = ()
+        fields = ('username', 'dept_id', 'phone')
 
 
 class BankUserChangeForm(UserChangeForm):
-    class Meta:
+    class Meta(UserChangeForm.Meta):
         model = BankUser
-        fields = ()
+        fields = ('username', 'dept_id', 'phone')
