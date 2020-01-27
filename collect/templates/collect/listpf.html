@@ -1,0 +1,13 @@
+{% extends 'collect/base.html' %}
+{% load static %}
+{% block title %}List{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for pf in pfs %}
+            {{ pf.pfid }} ||
+            {{ pf.submitter }}||
+            {{ pf.submit_time | date:"Y-m-d" }}
+        {% endfor %}
+    </div>
+{% endblock content %}
