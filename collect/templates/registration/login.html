@@ -5,28 +5,24 @@
 {% block content %}
     <div class="container">
         <link href="{% static 'collect/login.css' %}" rel="stylesheet">
-
         <form class="form-signin" method="post" action="">
             {% csrf_token %}
-            {{ form }}
-            <button type="submit">Login</button>
+            <img class="mb-4" src="" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">济南农行数据采集系统</h1>
+
+            <input type="text" id="username" class="form-control" placeholder="用户名" name="{{ form.username.html_name }}"
+                   required autofocus>
+            <input type="password" id="inputPassword" class="form-control" placeholder="密码"
+                   name="{{ form.password.html_name }}" required>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
         </form>
     </div>
-{#            <img class="mb-4" src="" alt="" width="72" height="72">#}
-{#            <h1 class="h3 mb-3 font-weight-normal">农行济南分行数据采集</h1>#}
-{#            <br>#}
-{#            <label for="inputEmail" class="sr-only">Email address</label>#}
-{#            <input type="text" id="username" class="form-control" placeholder="用户名" required autofocus>#}
-{#            <label for="inputPassword" class="sr-only">Password</label>#}
-{#            <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>#}
-{#            <div class="checkbox mb-3">#}
-{#                <label>#}
-{#                    <input type="checkbox" value="remember-me"> Remember me#}
-{#                </label>#}
-{#            </div>#}
-{#            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>#}
-{#            <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>#}
-{#        </form>#}
-{#    </div>#}
 {% endblock content %}
 
