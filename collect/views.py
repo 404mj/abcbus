@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import PersonalFinanceForm
 from .models import PersonalFinance, BankUser
 from .service import savepf
@@ -17,7 +17,7 @@ def add_pf(request):
             return HttpResponseRedirect('/collect/pf/list')
     else:
         form = PersonalFinanceForm()
-    return render(request, 'collect/newpf.html', {'form': form, 'name': 'zsx'})
+    return render(request, 'collect/newpf.html', {'form': form})
 
 
 def list_pf(request):
@@ -27,4 +27,16 @@ def list_pf(request):
 
 
 def edit_pf(request, pfid):
-    pass
+    pf_instance = get_object_or_404(PersonalFinance, pfid=pfid)
+    print(pf_instance.large_deposit)
+    form = PersonalFinanceForm(request.POST or None, instance=pf_instance)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/collect/pf/list')
+    return render(request, 'collect/newpf.html', {'form': form})
+
+
+def delete_pf(request, pfid):
+    print(pfid)
+    return HttpResponse("sss")

@@ -1,28 +1,37 @@
-{% extends 'collect/base.html' %}
-{% load static %}
-{% block title %}Login{% endblock %}
+<!DOCTYPE html>
 
-{% block content %}
-    <div class="container">
-        <link href="{% static 'collect/login.css' %}" rel="stylesheet">
-        <form class="form-signin" method="post" action="">
-            {% csrf_token %}
-            <img class="mb-4" src="" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">济南农行数据采集系统</h1>
+<html lang="en">
+<head>
+    {#  according to :  https://v4.bootcss.com/docs/getting-started/introduction/#}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link href="{% static 'collect/bootstrap4/css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+<div class="container">
+    <link href="{% static 'collect/login.css' %}" rel="stylesheet">
+    <form class="form-signin" method="post" action="">
+        {% csrf_token %}
+        <img class="mb-4" src="" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">济南农行数据采集系统</h1>
 
-            <input type="text" id="username" class="form-control" placeholder="用户名" name="{{ form.username.html_name }}"
-                   required autofocus>
-            <input type="password" id="inputPassword" class="form-control" placeholder="密码"
-                   name="{{ form.password.html_name }}" required>
+        <input type="text" id="username" class="form-control" placeholder="用户名" name="{{ form.username.html_name }}"
+               required autofocus>
+        <input type="password" id="inputPassword" class="form-control" placeholder="密码"
+               name="{{ form.password.html_name }}" required>
 
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
-        </form>
-    </div>
-{% endblock content %}
-
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+    </form>
+</div>
+</body>
+<script src="{% static 'collect/bootstrap4/js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'collect/bootstrap4/js/bootstrap.bundle.min.js' %}"></script>
+</html>

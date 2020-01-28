@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="container">
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped" id="pflist">
             <thead>
             <tr class="table-success">
                 <th scope="col">序号</th>
@@ -15,14 +15,16 @@
             </thead>
             <tbody>
             {% for pf in pfs %}
-                <tr>
+                <tr id="pfidx{{ forloop.counter }}">
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ pf.submit_time | date:"Y-m-d" }}</td>
                     <td>{{ user.username }}</td>
                     <td>
-                        <a href="{% url 'collect:pfedit' pf.pfid %}" class="btn-sm btn-primary">修改</a>
-                        {#                        invisible#}
-                        <a href="{% url 'collect:pfedit' pf.pfid %}" class="btn-sm btn-danger ">删除</a>
+                        <a href="{% url 'collect:pfedit' pf.pfid %}" class="btn btn-sm btn-primary">修改</a>
+                        <button type="button" class="btn btn-sm btn-danger"
+                                onclick="deletepf('pfidx{{ forloop.counter }}',{{ pf.pfid }})">
+                            删除
+                        </button>
                     </td>
                 </tr>
             {% endfor %}
@@ -31,4 +33,13 @@
 
     </div>
 
+    <script>
+    function deletepf(tridx,pfid) {
+{#        alert(tridx);#}
+{#        alert(pfid);#}
+{#        $.ajax({url:"/collect/pf/del/"+pfid});#}
+        $("#tridx").remove();
+
+    }
+    </script>
 {% endblock content %}
