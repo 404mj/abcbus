@@ -21,7 +21,7 @@ def add_pf(request):
 
 
 def list_pf(request):
-    pfs = PersonalFinance.objects.all()
+    pfs = PersonalFinance.objects.order_by('-submit_time')
     # submit_name = BankUser.objects.filter(id=pfs[0].submitter)
     return render(request, 'collect/listpf.html', {'pfs': pfs})
 

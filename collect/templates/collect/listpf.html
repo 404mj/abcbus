@@ -21,7 +21,8 @@
                     <td>{{ user.username }}</td>
                     <td>
                         <a href="{% url 'collect:pfedit' pf.pfid %}" class="btn-sm btn-primary">修改</a>
-                        <a href="{% url 'collect:pfedit' pf.pfid %}" class="btn-sm btn-danger invisible">删除</a>
+                        {#                        invisible#}
+                        <a href="{% url 'collect:pfedit' pf.pfid %}" class="btn-sm btn-danger ">删除</a>
                     </td>
                 </tr>
             {% endfor %}
