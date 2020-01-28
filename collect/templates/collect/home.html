@@ -3,12 +3,28 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        <p><a href="{% url 'logout' %}">logout</a></p>
-    {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">login</a> |
-    {% endif %}
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>个人金融</h1>
+            <p class="lead">本模块用于收集各个支行网点每日个金数据详情</p>
+            <a class="btn btn-lg btn-primary" href="{% url 'collect:pfadd' %}" role="button"> 去上报数据 &raquo;</a>
+        </div>
+    </main>
+
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>个人贷款</h1>
+            <p class="lead">数量大幅降低开发盎司附近的是开放的世界的地方</p>
+            <a class="btn btn-lg btn-primary" href="{% url 'collect:pfadd' %}" role="button"> 去上报数据 &raquo;</a>
+        </div>
+    </main>
+
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>网络金融</h1>
+            <p class="lead">死库容为out鬼屋报道放大司法所</p>
+            <a class="btn btn-lg btn-primary" href="{% url 'collect:pfadd' %}" role="button"> 去上报数据 &raquo;</a>
+        </div>
+    </main>
 
 {% endblock content %}

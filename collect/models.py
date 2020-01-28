@@ -13,6 +13,7 @@ class PersonalFinance(models.Model):
     large_deposit = models.CharField(default='0', max_length=100)
     precious_metal = models.CharField(default='0', max_length=100)
     found = models.CharField(default='0', max_length=100)
+    change_times = models.IntegerField(default=0)
 
 
 # 自定义用户模型
@@ -20,8 +21,6 @@ class BankUser(AbstractUser):
     # AutoField()
     dept_id = models.IntegerField(null=False, default=0)
     phone = models.CharField(max_length=30, default='')
-    lastop_time = models.DateTimeField(auto_now_add=True)
-    change_times = models.IntegerField(default=0)
 
     # USERNAME_FIELD = 'username'
     # REQUIRED_FIELDS = ['email', 'dept_id']

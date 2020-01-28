@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import PersonalFinanceForm
-from .models import PersonalFinance
+from .models import PersonalFinance, BankUser
 from .service import savepf
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
@@ -22,4 +22,9 @@ def add_pf(request):
 
 def list_pf(request):
     pfs = PersonalFinance.objects.all()
+    # submit_name = BankUser.objects.filter(id=pfs[0].submitter)
     return render(request, 'collect/listpf.html', {'pfs': pfs})
+
+
+def edit_pf(request, pfid):
+    pass
