@@ -3,8 +3,12 @@ from .forms import PersonalFinanceForm
 from .models import PersonalFinance, BankUser
 from .service import savepf
 from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
-from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+# from django.template import loader
+# from django.http import Http404
+
+PAGENUM = 3
 
 
 # 添加个金数据
@@ -21,8 +25,15 @@ def add_pf(request):
 
 
 def list_pf(request):
-    pfs = PersonalFinance.objects.order_by('-submit_time')
-    # submit_name = BankUser.objects.filter(id=pfs[0].submitter)
+    pflist = PersonalFinance.objects.all().order_by('-submit_time')
+    paginator = Paginator(pflist, PAGENUM)
+    page = request.GET.get('page')
+    try:
+        pfs = paginator.page(page)
+    except PageNotAnInteger:
+        pfs = paginator.page(1)
+    except EmptyPage:
+        pfs = paginator.page(paginator.num_pages)
     return render(request, 'collect/listpf.html', {'pfs': pfs})
 
 
@@ -39,5 +50,13 @@ def edit_pf(request, pfid):
 def delete_pf(request, pfid):
     print(pfid)
     PersonalFinance.objects.filter(pfid=pfid).delete()
-    pfs = PersonalFinance.objects.order_by('-submit_time')
+    pflist = PersonalFinance.objects.all().order_by('-submit_time')
+    paginator = Paginator(pflist, PAGENUM)
+    page = request.GET.get('page')
+    try:
+        pfs = paginator.page(page)
+    except PageNotAnInteger:
+        pfs = paginator.page(1)
+    except EmptyPage:
+        pfs = paginator.page(paginator.num_pages)
     return render(request, 'collect/listpf.html', {'pfs': pfs})

@@ -3,9 +3,9 @@
 {% block title %}List{% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container" id="pflist">
         <form>
-            <table class="table table-hover table-striped" id="pflist">
+            <table class="table table-hover table-striped">
                 <thead>
                 <tr class="table-success">
                     <th scope="col">序号</th>
@@ -32,7 +32,36 @@
                 </tbody>
             </table>
         </form>
+        <div class="container">
+            <nav aria-label="...">
+                <ul class="pagination justify-content-center">
+                    {% if pfs.has_previous %}
+                        <li><a class="page-link"
+                               href="?page={{ pfs.previous_page_number }}">上一页</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled"></li>
+                    {% endif %}
+
+                    {% for i in pfs.paginator.page_range %}
+                        {% if pfs.number == i %}
+                            <li class="page-item active" aria-current="page"><a class="page-link">{{ i }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if pfs.has_next %}
+                        <li><a class="page-link" href="?page={{ pfs.next_page_number }}">下一页</a></li>
+                    {% else %}
+                        <li class="page-item disabled"></li>
+                        </ul>
+                        </nav>
+                    {% endif %}
+        </div>
     </div>
+
 
     <script type="text/javascript">
 var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
@@ -54,14 +83,12 @@ $.ajaxSetup({
              csrfmiddlewaretoken: "{{ csrf_token }}",
          },
         success:function(result){
-            console.log(result)
+{#            console.log(result)#}
             $("#pflist").html(result);
           }
         });
 
     }
-
-
     </script>
 {% endblock content %}
 
