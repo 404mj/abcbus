@@ -60,3 +60,7 @@ def delete_pf(request, pfid):
     except EmptyPage:
         pfs = paginator.page(paginator.num_pages)
     return render(request, 'collect/listpf.html', {'pfs': pfs})
+
+
+def summary_pf(request):
+    pass
