@@ -45,9 +45,10 @@ def edit_pf(request, pfid):
     pf_instance = get_object_or_404(PersonalFinance, pfid=pfid)
     form = PersonalFinanceForm(request.POST or None, instance=pf_instance)
     if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/collect/pf/list')
+        pf_instance.change_times = 1
+        form = PersonalFinanceForm(request.POST or None, instance=pf_instance)
+        form.save()
+        return HttpResponseRedirect('/collect/pf/list')
     return render(request, 'collect/newpf.html', {'form': form})
 
 
