@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .forms import PersonalFinanceForm
-from .models import PersonalFinance, BankUser
+from .models import PersonalFinance, BankUser, Dept
 from .service import savepf
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -28,7 +28,19 @@ def add_pf(request):
 
 @login_required
 def list_pf(request):
-    pflist = PersonalFinance.objects.all().order_by('-submit_time')
+    user_dept = Dept.objects.filter(dept_id=request.user.dept_id).first()
+    # 三级网点只显示自己提交的，二级支行显示自己和下属提交的，一级分行全部显示
+    if user_dept.level == 1:
+        pflist = PersonalFinance.objects.all().order_by('-submit_time')
+    elif user_dept.level == 2:
+        depts_l2 = Dept.objects.raw('select dept_id from collect_dept where level=3 and parent = %s',
+                                    [user_dept.dept_id])
+        deptl2_list = [obj.dept_id for obj in depts_l2]
+        deptl2_list.append(user_dept.dept_id)
+        pflist = PersonalFinance.objects.filter(bank_subbrch__in=deptl2_list).order_by('-submit_time')
+    else:
+        pflist = PersonalFinance.objects.filter(bank_subbrch=user_dept.dept_id).order_by('-submit_time')
+
     paginator = Paginator(pflist, PAGENUM)
     page = request.GET.get('page')
     try:

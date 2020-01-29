@@ -19,7 +19,7 @@
                     <tr id="pfidx{{ forloop.counter }}">
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ pf.submit_time | date:"Y-m-d" }}</td>
-                        <td>{{ user.username }}</td>
+                        <td>{{ pf.submitter_name }}</td>
                         <td>
                             {% if pf.change_times >= 1 %}
                                 <a href="{% url 'collect:pfedit' pf.pfid %}"

@@ -9,7 +9,7 @@ def savepf(request):
     precious_metal = request.POST.get('precious_metal')
     found = request.POST.get('found')
     memo = request.POST.get('memo')
-    print(memo)
+    # print(memo)
     # user = get_user_model()
     # print(request.user)
     pf = PersonalFinance(large_deposit=large_deposit,
@@ -17,6 +17,7 @@ def savepf(request):
                          found=found,
                          memo=memo,
                          submitter=request.user.id,
+                         submitter_name=request.user.username,
                          bank_subbrch=request.user.dept_id
                          )
     pf.save()

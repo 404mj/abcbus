@@ -7,6 +7,7 @@ class PersonalFinance(models.Model):
     pfid = models.AutoField(primary_key=True, unique=True)
     memo = models.CharField(default='', max_length=300)
     submitter = models.IntegerField()
+    submitter_name = models.CharField(default='', max_length=100)
     bank_subbrch = models.IntegerField()
     submit_time = models.DateTimeField(auto_now_add=True)
 
@@ -31,8 +32,9 @@ class BankUser(AbstractUser):
 
 
 # 部门
-# 济南分行 <- 历下区支行 <- 历山路支行网点
+# 济南分行 <- 历下区支行 <- 历山路支行网点 一共三级。
 class Dept(models.Model):
     dept_id = models.IntegerField(primary_key=True, unique=True)
     dept_name = models.CharField(max_length=200, default='')
     parent = models.IntegerField(default=0)
+    level = models.IntegerField(default=0)
