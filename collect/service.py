@@ -1,6 +1,8 @@
 # from django.contrib.auth import get_user_model
 from .models import PersonalFinance
 
+ROOT_DEPTID = 1
+
 
 def savepf(request):
     large_deposit = request.POST.get('large_deposit')

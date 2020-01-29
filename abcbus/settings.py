@@ -26,7 +26,7 @@ AUTH_USER_MODEL = 'collect.BankUser'
 # AUTHENTICATION_BACKENDS = ('accounts.backends.')
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-# LOGIN_URL = 'collect/login'
+LOGIN_URL = '/collect/login'
 
 # Database
 DATABASES = {
