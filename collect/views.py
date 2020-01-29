@@ -28,7 +28,6 @@ def list_pf(request):
 
 def edit_pf(request, pfid):
     pf_instance = get_object_or_404(PersonalFinance, pfid=pfid)
-    print(pf_instance.large_deposit)
     form = PersonalFinanceForm(request.POST or None, instance=pf_instance)
     if request.method == 'POST':
         if form.is_valid():
@@ -39,4 +38,6 @@ def edit_pf(request, pfid):
 
 def delete_pf(request, pfid):
     print(pfid)
-    return HttpResponse("sss")
+    PersonalFinance.objects.filter(pfid=pfid).delete()
+    pfs = PersonalFinance.objects.order_by('-submit_time')
+    return render(request, 'collect/listpf.html', {'pfs': pfs})
