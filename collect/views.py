@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 PAGENUM = 3
 
 
-# 添加个金数据
+# ======================== 添加个金数据 =======================
 @login_required
 def add_pf(request):
     if request.method == 'POST':
@@ -26,8 +26,20 @@ def add_pf(request):
     return render(request, 'collect/newpf.html', {'form': form})
 
 
+# ==================== 提交记录列表 ======================#
 @login_required
 def list_pf(request):
+    from django.contrib.auth.models import Permission
+    # permissions = Permission.objects.filter(user=request.user)
+    # group_permissions = Permission.objects.filter(group__user=request.user)
+    # perm_tuple = [(x.id, x.name) for x in permissions]
+    # gperm_tuple = [(x.id, x.name) for x in group_permissions]
+    # print('========>')
+    # print(perm_tuple)
+    # print(gperm_tuple)
+    # print(request.user.has_perm('collect.add_personalfinance'))
+    # print(request.user.has_add_perm(PersonalFinance))
+
     user_dept = Dept.objects.filter(dept_id=request.user.dept_id).first()
     # 三级网点只显示自己提交的，二级支行显示自己和下属提交的，一级分行全部显示
     if user_dept.level == 1:
@@ -52,6 +64,7 @@ def list_pf(request):
     return render(request, 'collect/listpf.html', {'pfs': pfs})
 
 
+# ==================== 修改已提交数据 ======================#
 @login_required
 def edit_pf(request, pfid):
     pf_instance = get_object_or_404(PersonalFinance, pfid=pfid)
@@ -64,6 +77,7 @@ def edit_pf(request, pfid):
     return render(request, 'collect/newpf.html', {'form': form})
 
 
+# ==================== 删除某条提记录 ======================#
 @login_required
 def delete_pf(request, pfid):
     print(pfid)
@@ -80,6 +94,7 @@ def delete_pf(request, pfid):
     return render(request, 'collect/listpf.html', {'pfs': pfs})
 
 
+# ==================== 报表统计 ======================#
 @login_required
 def summary_pf(request):
     pass

@@ -28,6 +28,9 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = '/collect/login'
 
+# session exired: 12hrs
+SESSION_COOKIE_AGE = 43200
+
 # Database
 DATABASES = {
     'default': {
@@ -35,7 +38,7 @@ DATABASES = {
         'NAME': 'abcbus',
         'USER': 'root',
         'PASSWORD': '123Qwe!@#',
-        'HOST': '192.168.174.137',
+        'HOST': '192.168.174.138',
         'PORT': '3306',
         'charset': 'utf8'
     }

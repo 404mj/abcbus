@@ -29,10 +29,12 @@
                                 <a href="{% url 'collect:pfedit' pf.pfid %}" class="btn btn-sm btn-primary"
                                    onclick="notice()">修改</a>
                             {% endif %}
-                            <button type="button" class="btn btn-sm btn-danger"
-                                    onclick="deletepf('pfidx{{ forloop.counter }}',{{ pf.pfid }})">
-                                删除
-                            </button>
+                            {% if perms.collect.delete_personalfinance %}
+                                <button type="button" class="btn btn-sm btn-danger"
+                                        onclick="deletepf('pfidx{{ forloop.counter }}',{{ pf.pfid }})">
+                                    删除
+                                </button>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
