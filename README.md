@@ -29,8 +29,8 @@ python manage.py runserver
 
 -[ ] list page add filter
 
--[ ] pagination
+-[x] pagination
 
--[ ] authority and permission optimization
+-[x] authority and permission optimization
 
 -[ ] exception handling
