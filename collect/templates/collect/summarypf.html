@@ -1,0 +1,25 @@
+{% extends 'collect/base.html' %}
+{% load static %}
+{% block title %}Summary{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form class="" method="post" action="">
+            {% csrf_token %}
+            <div class="form-row" style="padding-top: 30px">
+                <div class="col-md-6">
+                    <label for="datepicker">选 择 时 间：</label>
+                    <input id="datepicker" width="30%" name="summary_date"/>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-md btn-outline-dark btn-block" type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $('#datepicker').datepicker(
+            {format: 'yyyy-mm-dd'}
+        );
+    </script>
+{% endblock %}

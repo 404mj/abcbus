@@ -97,4 +97,8 @@ def delete_pf(request, pfid):
 # ==================== 报表统计 ======================#
 @login_required
 def summary_pf(request):
-    pass
+    if request.method == 'POST':
+        print('---------->>>:')
+        print(request.POST.get('summary_date'))
+        return HttpResponse(request.POST.summary_date)
+    return render(request, 'collect/summarypf.html')
