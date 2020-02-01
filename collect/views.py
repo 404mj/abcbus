@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .forms import PersonalFinanceForm
-from .models import PersonalFinance, BankUser, Dept
-from .service import savepf
-from django.http import HttpResponse, HttpResponseRedirect
+from .models import PersonalFinance, Dept
+from .service import savepf, statpf
+from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 
@@ -98,7 +98,7 @@ def delete_pf(request, pfid):
 @login_required
 def summary_pf(request):
     if request.method == 'POST':
-        print('---------->>>:')
-        print(request.POST.get('summary_date'))
-        return HttpResponse(request.POST.summary_date)
+        summary_date = request.POST.get('summary_date')
+        if len(summary_date) != 0:
+            return statpf(request)
     return render(request, 'collect/summarypf.html')
